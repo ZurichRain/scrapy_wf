@@ -35,5 +35,15 @@ class MySpider(scrapy.Spider):
         yield SplashRequest(url, self.parse, args={'wait': 1})
 
     def parse(self, response):
-        # 解析响应内容
+        for quote in response.css('div.quote'):
+            yield {
+                'text': quote.css('span.text::text').get(),
+                'author': quote.css('span small::text').get(),
+            }
+    
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            next_page = response.urljoin(next_page)
+            yield SplashRequest(next_page, self.parse)
+
 
