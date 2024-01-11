@@ -51,6 +51,7 @@ presence_of_element_located: 等待直到指定的元素在 DOM 中出现，但�
 visibility_of_element_located: 等待直到指定的元素不仅出现在 DOM 中，且可见。
 element_to_be_clickable: 等待直到元素可被点击。
 text_to_be_present_in_element: 等待直到指定的元素中出现了预期的文本。
+invisibility_of_element_located：等待指定元素消失在DOM中
 '''
 # 等待直到元素可见，最多等待10秒
 element = WebDriverWait(driver, 10).until(
