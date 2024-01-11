@@ -48,11 +48,28 @@ driver.execute_script("arguments[0].scrollIntoView();", download_button)
 
 '''
 presence_of_element_located: 等待直到指定的元素在 DOM 中出现，但不一定可见。
+WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.ID, 'elementId'))
+)
 visibility_of_element_located: 等待直到指定的元素不仅出现在 DOM 中，且可见。
+WebDriverWait(driver, 10).until(
+    EC.visibility_of_element_located((By.ID, 'elementId'))
+)
 element_to_be_clickable: 等待直到元素可被点击。
+WebDriverWait(driver, 10).until(
+    EC.element_to_be_clickable((By.ID, 'elementId'))
+)
 text_to_be_present_in_element: 等待直到指定的元素中出现了预期的文本。
+WebDriverWait(driver, 10).until(
+    EC.text_to_be_present_in_element((By.ID, 'elementId'))
+)
 invisibility_of_element_located：等待指定元素消失在DOM中
+WebDriverWait(driver, 10).until(
+    EC.invisibility_of_element_located((By.ID, 'elementId'))
+)
 staleness_of：这个条件用于检查某个元素是否不再附着于 DOM。它通常用于等待页面刷新后元素的消失。
+element = driver.find_element(By.ID, 'elementId')
+WebDriverWait(driver, 10).until(EC.staleness_of(element))
 '''
 # 等待直到元素可见，最多等待10秒
 element = WebDriverWait(driver, 10).until(
